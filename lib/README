@@ -1,0 +1,2 @@
+Please copy catalina.jar and servlet-api.jar from tomcat/lib here.
+tomcat-juli.jar from tomcat/bin.
