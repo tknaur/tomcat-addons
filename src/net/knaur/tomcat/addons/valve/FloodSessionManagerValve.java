@@ -41,7 +41,7 @@ public class FloodSessionManagerValve extends ValveBase {
 	
 	private static long LAST_CLEANING_TIME = 0;
 	private static String DELETE_BAN_REQUEST_METHOD = "DELETE";
-	private static String PURGE_BAN_LIST_REQUEST_HEDER = "PURGE_TOKEN";
+	private static String PURGE_BAN_LIST_REQUEST_HEADER = "PURGE_TOKEN";
 	
 	private final Queue<Integer> blockedClients = new ConcurrentLinkedQueue<Integer>();
 	private final Map<Integer, Integer> counter = new ConcurrentHashMap<Integer, Integer>();
@@ -69,7 +69,7 @@ public class FloodSessionManagerValve extends ValveBase {
 			response.setCharacterEncoding("utf-8");
 			ServletOutputStream outputStream = response.getOutputStream();
 			
-			String sentPurgeToken = request.getHeader(PURGE_BAN_LIST_REQUEST_HEDER);
+			String sentPurgeToken = request.getHeader(PURGE_BAN_LIST_REQUEST_HEADER);
 			if (sentPurgeToken != null && getBlockedListPurgeToken().equals(sentPurgeToken)) {
 				blockedClients.clear();
 				response.setStatus(HttpServletResponse.SC_OK);
